@@ -1,39 +1,146 @@
-/* Force LCARS Theme */
-* {
-  --lcars-primary: #FF6600 !important;
-  --lcars-secondary: #0099FF !important;
-  --lcars-dark: #000000 !important;
-  --lcars-accent: #FFCC00 !important;
+/* Full LCARS Star Trek Theme - Enhanced */
+
+:root {
+  --lcars-orange: #FF6600;
+  --lcars-blue: #0099FF;
+  --lcars-yellow: #FFCC00;
+  --lcars-dark: #000000;
+  --lcars-text: #CCCCCC;
 }
 
-html, body {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%) !important;
-  background-attachment: fixed !important;
+/* Corner brackets for cards */
+.card::before,
+.card::after,
+[class*="service"]::before,
+[class*="service"]::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--lcars-orange);
 }
 
-body > * {
-  background: transparent !important;
+.card::before { top: -8px; left: -8px; border-right: none; border-bottom: none; }
+.card::after { top: -8px; right: -8px; border-left: none; border-bottom: none; }
+
+/* Bottom corners */
+[class*="card"]::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--lcars-blue);
+  bottom: -8px;
+  left: -8px;
+  border-right: none;
+  border-top: none;
 }
 
-[class*="bg"], [class*="background"] {
-  background: #0a0a0a !important;
+/* Glowing borders */
+.card, [class*="service"], [class*="card"] {
+  position: relative;
+  border-left: 4px solid var(--lcars-orange) !important;
+  border-top: 2px solid var(--lcars-blue) !important;
+  box-shadow: 0 0 15px rgba(255, 102, 0, 0.3), inset 0 0 10px rgba(0, 0, 0, 0.8) !important;
+  background: linear-gradient(135deg, rgba(10, 10, 20, 0.9), rgba(0, 0, 0, 0.95)) !important;
 }
 
-[class*="header"], [class*="Header"] {
-  background: linear-gradient(90deg, #FF6600 0%, #0099FF 100%) !important;
+.card:hover, [class*="service"]:hover {
+  box-shadow: 0 0 25px rgba(255, 102, 0, 0.6), 0 0 40px rgba(0, 153, 255, 0.3), inset 0 0 15px rgba(255, 102, 0, 0.1) !important;
 }
 
-[class*="card"], [class*="Card"], [class*="service"], [class*="Service"] {
-  background: #0a0a0a !important;
-  border: 2px solid #FF6600 !important;
-  border-radius: 0 !important;
+/* Header styling */
+.header, [class*="header"], h1, h2 {
+  background: linear-gradient(90deg, var(--lcars-orange) 0%, var(--lcars-blue) 100%) !important;
+  color: var(--lcars-dark) !important;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-a, [role="link"] {
-  color: #0099FF !important;
+/* Links with glow */
+a {
+  color: var(--lcars-blue) !important;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
-a:hover, [role="link"]:hover {
-  color: #FFCC00 !important;
-  text-shadow: 0 0 10px #FF6600 !important;
+a:hover {
+  color: var(--lcars-yellow) !important;
+  text-shadow: 0 0 20px var(--lcars-orange), 0 0 40px var(--lcars-blue);
+}
+
+/* Status indicators */
+.status-ok::before {
+  content: '●';
+  color: var(--lcars-blue);
+  text-shadow: 0 0 10px var(--lcars-blue);
+  margin-right: 5px;
+}
+
+.status-warning::before {
+  content: '●';
+  color: var(--lcars-yellow);
+  text-shadow: 0 0 10px var(--lcars-yellow);
+  margin-right: 5px;
+}
+
+.status-error::before {
+  content: '●';
+  color: #FF3333;
+  text-shadow: 0 0 10px #FF3333;
+  margin-right: 5px;
+}
+
+/* Text styling */
+.title, [class*="title"] {
+  color: var(--lcars-yellow) !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Tabs styling */
+[class*="tab"], [role="tab"] {
+  background: rgba(0, 0, 0, 0.6) !important;
+  border: 1px solid var(--lcars-blue) !important;
+  color: var(--lcars-text) !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+}
+
+[class*="tab"][class*="active"], [role="tab"][aria-selected="true"] {
+  background: linear-gradient(90deg, var(--lcars-orange), var(--lcars-blue)) !important;
+  color: var(--lcars-dark) !important;
+  box-shadow: 0 0 20px rgba(255, 102, 0, 0.6);
+}
+
+/* Button styling */
+button, [role="button"] {
+  background: var(--lcars-blue) !important;
+  color: var(--lcars-dark) !important;
+  border: 2px solid var(--lcars-orange) !important;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+}
+
+button:hover, [role="button"]:hover {
+  background: var(--lcars-orange) !important;
+  box-shadow: 0 0 20px var(--lcars-orange);
+}
+
+/* Widget containers */
+[class*="widget"] {
+  border: 2px solid var(--lcars-blue) !important;
+  background: rgba(0, 0, 0, 0.7) !important;
+  box-shadow: inset 0 0 10px rgba(0, 153, 255, 0.1);
+}
+
+/* Monospace text for data */
+.text-mono, code {
+  font-family: 'Courier New', monospace;
+  color: var(--lcars-yellow) !important;
 }
