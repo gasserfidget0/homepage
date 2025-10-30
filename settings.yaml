@@ -1,17 +1,44 @@
-title: Stealthstack Command Center
-description: LCARS Homelab Dashboard
+title: Stealthstack
+description: Home Infrastructure Dashboard
 
+# Theme & Colors
+headerStyle: boxed
+theme: dark
+color: blue
+
+# LCARS Background
 background:
   image: /images/lcars-bg.png
   opacity: 80
   blur: md
   brightness: 60
 
-color: blue
-theme: dark
-headerStyle: boxed
+# Layout with tabs
+layout:
+  - Infrastructure:
+      tab: Network
+      columns: 3
 
-quicklaunch:
-  hideInternetSearch: false
+  - Media Server:
+      tab: Media
+      columns: 4
 
-language: en
+  - Media Acquisition:
+      tab: Media
+      columns: 3
+
+  - Monitoring:
+      tab: Utilities
+      columns: 2
+
+  - System & Tools:
+      tab: Utilities
+      columns: 3
+
+  - Home Management:
+      tab: Home
+      columns: 2
+
+  - Finance:
+      tab: Home
+      columns: 2
