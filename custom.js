@@ -1,33 +1,46 @@
-// Inject LCARS theme CSS directly into head (bypasses Next.js overrides)
-const injectLCARSCSS = () => {
-  if (document.getElementById('lcars-theme')) return; // Only inject once
+const injectLCARSTheme = () => {
+  if (document.getElementById('lcars-injected')) return;
   
   const style = document.createElement('style');
-  style.id = 'lcars-theme';
+  style.id = 'lcars-injected';
   style.textContent = `
+    :root {
+      --lcars-primary: #FF6600 !important;
+      --lcars-secondary: #0099FF !important;
+      --lcars-dark: #000000 !important;
+      --lcars-accent: #FFCC00 !important;
+      --lcars-text: #CCCCCC !important;
+    }
+
     html, body {
       background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%) !important;
+      color: var(--lcars-text) !important;
+    }
+
+    body {
       background-attachment: fixed !important;
     }
-    * {
-      background-color: transparent !important;
+
+    .header, .card, [class*="card"], [class*="header"] {
+      background: linear-gradient(90deg, var(--lcars-primary) 0%, var(--lcars-secondary) 100%) !important;
+      border: 2px solid var(--lcars-primary) !important;
     }
-    body > div, body > main {
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%) !important;
+
+    a {
+      color: var(--lcars-secondary) !important;
     }
+
     a:hover {
-      text-shadow: 0 0 10px #FF6600 !important;
+      color: var(--lcars-accent) !important;
+      text-shadow: 0 0 10px var(--lcars-primary) !important;
     }
   `;
   document.head.appendChild(style);
 };
 
-// Inject before anything loads
-injectLCARSCSS();
-
-// Re-inject if removed
+injectLCARSTheme();
 setInterval(() => {
-  if (!document.getElementById('lcars-theme')) {
-    injectLCARSCSS();
+  if (!document.getElementById('lcars-injected')) {
+    injectLCARSTheme();
   }
-}, 500);
+}, 1000);
