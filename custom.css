@@ -1,0 +1,39 @@
+/* Force LCARS Theme */
+* {
+  --lcars-primary: #FF6600 !important;
+  --lcars-secondary: #0099FF !important;
+  --lcars-dark: #000000 !important;
+  --lcars-accent: #FFCC00 !important;
+}
+
+html, body {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%) !important;
+  background-attachment: fixed !important;
+}
+
+body > * {
+  background: transparent !important;
+}
+
+[class*="bg"], [class*="background"] {
+  background: #0a0a0a !important;
+}
+
+[class*="header"], [class*="Header"] {
+  background: linear-gradient(90deg, #FF6600 0%, #0099FF 100%) !important;
+}
+
+[class*="card"], [class*="Card"], [class*="service"], [class*="Service"] {
+  background: #0a0a0a !important;
+  border: 2px solid #FF6600 !important;
+  border-radius: 0 !important;
+}
+
+a, [role="link"] {
+  color: #0099FF !important;
+}
+
+a:hover, [role="link"]:hover {
+  color: #FFCC00 !important;
+  text-shadow: 0 0 10px #FF6600 !important;
+}
