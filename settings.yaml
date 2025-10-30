@@ -1,12 +1,11 @@
 title: Stealthstack Command Center
 description: LCARS Homelab Dashboard
 
-# LCARS Dark Theme
 background:
   image: /images/lcars-bg.png
   opacity: 80
   blur: md
-  brightness: 50
+  brightness: 60
 
 color: blue
 theme: dark
@@ -16,7 +15,3 @@ quicklaunch:
   hideInternetSearch: false
 
 language: en
-background:
-  image: /images/lcars-bg.png
-  opacity: 80
-  brightness: 60
