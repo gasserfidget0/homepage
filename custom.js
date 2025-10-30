@@ -1,17 +1,32 @@
 const applyLCARSTheme = () => {
-  const root = document.documentElement;
-  root.style.setProperty('--lcars-primary', '#FF6600', 'important');
-  root.style.setProperty('--lcars-secondary', '#0099FF', 'important');
-  root.style.setProperty('--lcars-dark', '#000000', 'important');
-  root.style.setProperty('--lcars-accent', '#FFCC00', 'important');
-  document.body.style.background = 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%)';
-  document.body.style.backgroundAttachment = 'fixed';
-  document.querySelectorAll('[class*="bg"], [class*="background"]').forEach(el => {
-    el.style.background = '#0a0a0a !important';
+  // Apply to document element
+  document.documentElement.style.background = 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%) !important';
+  document.documentElement.style.backgroundAttachment = 'fixed !important';
+  
+  // Apply to body
+  document.body.style.background = 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%) !important';
+  document.body.style.backgroundAttachment = 'fixed !important';
+  
+  // Find and override all container elements
+  const containers = document.querySelectorAll('[class*="container"], [class*="main"], main, [class*="layout"]');
+  containers.forEach(el => {
+    el.style.background = 'transparent !important';
+    el.style.backgroundColor = 'transparent !important';
   });
 };
+
+// Apply immediately
 applyLCARSTheme();
+
+// Re-apply on load
 window.addEventListener('load', applyLCARSTheme);
-setInterval(applyLCARSTheme, 500);
-const observer = new MutationObserver(applyLCARSTheme);
-observer.observe(document.body, { childList: true, subtree: true });
+window.addEventListener('DOMContentLoaded', applyLCARSTheme);
+
+// Keep re-applying every 200ms to fight React re-renders
+setInterval(applyLCARSTheme, 200);
+
+// Watch for DOM mutations
+const observer = new MutationObserver(() => {
+  setTimeout(applyLCARSTheme, 50);
+});
+observer.observe(document.body, { childList: true, subtree: true, attributes: true });
