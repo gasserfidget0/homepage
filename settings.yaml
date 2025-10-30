@@ -1,0 +1,38 @@
+---
+title: Stealthstack
+description: Home Infrastructure Dashboard
+
+# Theme & Colors
+headerStyle: boxed
+theme: dark
+color: blue
+
+# Layout with tabs
+layout:
+  - Infrastructure:
+      tab: Network
+      columns: 3
+
+  - Media Server:
+      tab: Media
+      columns: 4
+
+  - Media Acquisition:
+      tab: Media
+      columns: 3
+
+  - Monitoring:
+      tab: Utilities
+      columns: 2
+
+  - System & Tools:
+      tab: Utilities
+      columns: 3
+
+  - Home Management:
+      tab: Home
+      columns: 2
+
+  - Finance:
+      tab: Home
+      columns: 2

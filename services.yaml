@@ -1,0 +1,11 @@
+- Infrastructure:
+    - Pi-hole:
+        href: http://192.168.86.21/admin
+        icon: /icons/pihole.png
+        description: Network-wide Ad Blocker
+        widget:
+          type: pihole
+          url: http://192.168.86.21
+          version: 6
+          key: UZyJ5KCt6XzTgVD7fGAMd7x2F3APPZRJSCMlpyK4aZM=
+          fields: ["queries", "blocked", "blocked_percent"]
